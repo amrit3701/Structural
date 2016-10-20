@@ -8,13 +8,13 @@ import FreeCAD, Part, math
 from FreeCAD import Base
 from pivy import coin
 
-class PartFeature:
-    def __init__(self, obj):
-        obj.Proxy = self
+#class PartFeature:
+#    def __init__(self, obj):
+#        obj.Proxy = self
 
-class Table(PartFeature):
+class Table():
     def __init__(self, obj):
-        PartFeature.__init__(self, obj)
+        #PartFeature.__init__(self, obj)
         ''' Add some custom properties to our box feature '''
         obj.addProperty("App::PropertyLength","L_Length","Slab","Length of the slab").L_Length=10.0
         obj.addProperty("App::PropertyLength","L_Width","Slab","Width of the slab").L_Width=10.0
@@ -22,7 +22,7 @@ class Table(PartFeature):
         obj.addProperty("App::PropertyLength","S_Length","Leg","Length of the leg").S_Length=1.0
         obj.addProperty("App::PropertyLength","S_Width","Leg","Width of the leg").S_Width=1.0
         obj.addProperty("App::PropertyLength","S_Height","Leg", "Height of the leg").S_Height=8.0
-
+        obj.Proxy = self
 
     def onChanged(self, fp, prop):
         ''' Print the name of the property that has changed '''
